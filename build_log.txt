@@ -1,0 +1,49 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load .dockerignore
+#1 transferring context: 2B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.76kB done
+#2 DONE 0.0s
+
+#3 [auth] jupyter/minimal-notebook:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#4 [internal] load metadata for docker.io/jupyter/minimal-notebook:latest
+#4 DONE 0.3s
+
+#5 [1/9] FROM docker.io/jupyter/minimal-notebook:latest@sha256:1c4c8b6c7c27059c353d4e80523c2696e34723fde67d27418873ebeb42032551
+#5 DONE 0.0s
+
+#6 [2/9] RUN apt-get update && apt-get install -y     graphviz    g++    libgl1-mesa-glx     cmake    gcc     python3-dev     protobuf-compiler     && rm -rf /var/lib/apt/lists/*
+#6 CACHED
+
+#7 [3/9] RUN conda install python=3.10.6
+#7 CACHED
+
+#8 [internal] load build context
+#8 transferring context: 38B 1.0s done
+#8 DONE 1.0s
+
+#9 [4/9] COPY docker/vivado_cfg.txt /tmp/vivado_cfg.txt
+#9 ERROR: failed to calculate checksum of ref a7b61bcc-c9fc-4572-b932-7bb6342c0905::d5unhiis4uyba6gv5o8cfoajs: "/docker/vivado_cfg.txt": not found
+
+#10 [5/9] COPY docker/install_vivado.sh /tmp/install_vivado.sh
+#10 ERROR: failed to calculate checksum of ref a7b61bcc-c9fc-4572-b932-7bb6342c0905::d5unhiis4uyba6gv5o8cfoajs: "/docker/install_vivado.sh": not found
+------
+ > [4/9] COPY docker/vivado_cfg.txt /tmp/vivado_cfg.txt:
+------
+------
+ > [5/9] COPY docker/install_vivado.sh /tmp/install_vivado.sh:
+------
+Dockerfile:29
+--------------------
+  27 |     # #ENV PATH="vivado_hls/bin:${PATH}"
+  28 |     
+  29 | >>> COPY docker/vivado_cfg.txt /tmp/vivado_cfg.txt
+  30 |     COPY docker/install_vivado.sh /tmp/install_vivado.sh
+  31 |     RUN source /tmp/install_vivado.sh && rm /tmp/install_vivado.sh
+--------------------
+ERROR: failed to solve: failed to compute cache key: failed to calculate checksum of ref a7b61bcc-c9fc-4572-b932-7bb6342c0905::d5unhiis4uyba6gv5o8cfoajs: "/docker/vivado_cfg.txt": not found
